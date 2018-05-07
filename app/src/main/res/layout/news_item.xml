@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="132dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/newsHeadline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@id/newsThumbnail"
+        android:fontFamily="sans-serif-bold"
+        tools:text="@string/placeholder_headline"
+        android:textSize="20sp"
+        android:textColor="@color/colorBlack"
+        android:textAllCaps="false"
+        android:maxLines="2" />
+
+    <LinearLayout
+        android:id="@+id/newsButtons"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@id/newsThumbnail">
+
+        <ImageButton
+            android:id="@+id/bookmarkBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/cd_bookmark_btn"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/btn_bookmark" />
+
+        <ImageButton
+            android:id="@+id/shareBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/cd_bookmark_btn"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/btn_share" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/newsThumbnail"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:contentDescription="@string/cd_news_thumb"
+        tools:src="@drawable/placeholder" />
+
+</RelativeLayout>
