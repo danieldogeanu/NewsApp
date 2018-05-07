@@ -17,6 +17,7 @@
 /.idea/dynamic.xml
 /.idea/uiDesigner.xml
 /.idea/kotlinc.xml
+/.idea/assetWizardSettings.xml
 .DS_Store
 /build
 /out
