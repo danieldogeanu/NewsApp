@@ -13,4 +13,45 @@
         <item name="android:drawSelectorOnTop">true</item>
     </style>
 
+    <style name="NewsItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">132dp</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <style name="NewsHeadline">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:layout_toStartOf">@id/newsThumbnail</item>
+        <item name="android:fontFamily">sans-serif-bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:maxLines">2</item>
+    </style>
+
+    <style name="NewsButtonsContainer">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_toStartOf">@id/newsThumbnail</item>
+    </style>
+
+    <style name="NewsButton">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="NewsThumbnail">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_alignParentTop">true</item>
+    </style>
+
 </resources>
