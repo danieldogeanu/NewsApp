@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">News App</string>
 
-    <string name="placeholder_headline">The Main Article Headline Goes Here</string>
+    <string name="placeholder_headline">The main article headline goes here and occupies three rows</string>
 
     <string name="cd_news_thumb">Article Thumbnail</string>
     <string name="cd_bookmark_btn">Bookmark</string>
