@@ -16,7 +16,7 @@ public class NewsActivity extends AppCompatActivity {
         ArrayList<Article> articles = new ArrayList<>();
         String placeholderHeadline = getString(R.string.placeholder_headline);
         for (int i = 0; i < 10; i++) {
-            articles.add(new Article(placeholderHeadline, ""));
+            articles.add(new Article(placeholderHeadline, "", "", ""));
         }
 
         ListView listView = findViewById(R.id.newsList);

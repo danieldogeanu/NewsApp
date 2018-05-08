@@ -4,10 +4,14 @@ public class Article {
 
     private String mArticleTitle;
     private String mArticleUrl;
+    private String mArticleThumbnailUrl;
+    private String mArticlePublishedDate;
 
-    public Article(String title, String url) {
+    public Article(String title, String url, String thumbnail, String published) {
         mArticleTitle = title;
         mArticleUrl = url;
+        mArticleThumbnailUrl = thumbnail;
+        mArticlePublishedDate = published;
     }
 
     public String getArticleTitle() {
@@ -16,6 +20,14 @@ public class Article {
 
     public String getArticleUrl() {
         return mArticleUrl;
+    }
+
+    public String getArticleThumbnailUrl() {
+        return mArticleThumbnailUrl;
+    }
+
+    public String getArticlePublishedDate() {
+        return mArticlePublishedDate;
     }
 
     public void setArticleTitle(String title) {
