@@ -30,7 +30,7 @@
     <ImageView
         android:id="@+id/newsThumbnail"
         android:contentDescription="@string/cd_news_thumb"
-        tools:src="@drawable/placeholder"
+        android:src="@drawable/placeholder"
         style="@style/NewsThumbnail" />
 
 </RelativeLayout>

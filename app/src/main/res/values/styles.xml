@@ -10,13 +10,16 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:orientation">vertical</item>
-        <item name="android:drawSelectorOnTop">true</item>
     </style>
 
     <style name="NewsItem">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">132dp</item>
         <item name="android:padding">16dp</item>
+        <item name="android:clickable">false</item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:descendantFocusability">blocksDescendants</item>
     </style>
 
     <style name="NewsHeadline">
@@ -35,6 +38,7 @@
         <item name="android:orientation">horizontal</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">-12dp</item>
         <item name="android:layout_alignParentStart">true</item>
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_toStartOf">@id/newsThumbnail</item>
