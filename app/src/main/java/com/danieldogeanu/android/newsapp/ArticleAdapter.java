@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -29,8 +28,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
         Article currentArticle = getItem(position);
 
-        TextView newsHeadline = (TextView) listItemView.findViewById(R.id.newsHeadline);
-        newsHeadline.setText(currentArticle.getArticleTitle());
+        Utils.fillText(listItemView, R.id.newsHeadline, Utils.capitalize(currentArticle.getArticleTitle()));
 
         return listItemView;
     }
