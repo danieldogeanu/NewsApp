@@ -19,12 +19,12 @@ public class Utils {
     }
 
     public static void fillText(Activity activity, int id, CharSequence text) {
-        TextView thisTextView = (TextView) activity.findViewById(id);
+        TextView thisTextView = activity.findViewById(id);
         thisTextView.setText(text);
     }
 
     public static void fillText(View view, int id, CharSequence text) {
-        TextView thisTextView = (TextView) view.findViewById(id);
+        TextView thisTextView = view.findViewById(id);
         thisTextView.setText(text);
     }
 

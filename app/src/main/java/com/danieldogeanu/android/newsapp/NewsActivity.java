@@ -19,7 +19,7 @@ public class NewsActivity extends AppCompatActivity {
             articles.add(new Article(placeholderHeadline, ""));
         }
 
-        ListView listView = (ListView) findViewById(R.id.newsList);
+        ListView listView = findViewById(R.id.newsList);
         ArticleAdapter adapter = new ArticleAdapter(this, articles);
         listView.setAdapter(adapter);
     }
