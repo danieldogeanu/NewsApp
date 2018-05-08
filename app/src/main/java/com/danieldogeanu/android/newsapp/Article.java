@@ -34,7 +34,9 @@ public class Article {
     public String toString() {
         return "Article {" +
                 "mArticleTitle='" + mArticleTitle + "', " +
-                "mArticleUrl='" + mArticleUrl + "' " +
+                "mArticleUrl='" + mArticleUrl + "', " +
+                "mArticleThumbnailUrl='" + mArticleThumbnailUrl + "', " +
+                "mArticlePublishedDate='" + mArticlePublishedDate + "' " +
                 "}";
     }
 }
