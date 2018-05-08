@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.TextView;
 
-public class Utils {
+public final class Utils {
+
+    public static final String LOG_TAG = Utils.class.getSimpleName();
 
     private Utils() {}
 
