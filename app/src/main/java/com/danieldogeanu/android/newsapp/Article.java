@@ -30,14 +30,6 @@ public class Article {
         return mArticlePublishedDate;
     }
 
-    public void setArticleTitle(String title) {
-        mArticleTitle = title;
-    }
-
-    public void setArticleUrl(String url) {
-        mArticleUrl = url;
-    }
-
     @Override
     public String toString() {
         return "Article {" +
