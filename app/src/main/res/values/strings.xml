@@ -6,4 +6,8 @@
     <string name="cd_news_thumb">Article Thumbnail</string>
     <string name="cd_bookmark_btn">Bookmark</string>
     <string name="cd_share_btn">Share</string>
+    <string name="cd_empty_state_img">Empty State Image</string>
+
+    <string name="no_articles">No articles found.</string>
+    <string name="no_internet">No Internet connection.</string>
 </resources>

@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/newsList"
-    style="@style/NewsList"
-    tools:context=".NewsActivity" />
+    style="@style/NewsActivity"
+    tools:context=".NewsActivity">
+
+    <ListView
+        android:id="@+id/newsList"
+        style="@style/NewsList" />
+
+    <include
+        android:id="@+id/emptyState"
+        style="@style/EmptyState"
+        layout="@layout/empty_state" />
+
+    <ProgressBar
+        android:id="@+id/loadingIndicator"
+        style="@style/LoadingIndicator" />
+
+</RelativeLayout>

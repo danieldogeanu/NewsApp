@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/EmptyStateContainer">
+
+    <ImageView
+        android:id="@+id/emptyImg"
+        android:contentDescription="@string/cd_empty_state_img"
+        style="@style/EmptyStateImage" />
+
+    <TextView
+        android:id="@+id/emptyTxt"
+        style="@style/EmptyStateText"
+        tools:text="@string/no_internet"/>
+
+</LinearLayout>
