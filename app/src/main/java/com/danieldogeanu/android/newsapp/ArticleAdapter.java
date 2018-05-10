@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -16,8 +17,11 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
     private static final String LOG_TAG = ArrayAdapter.class.getSimpleName();
 
-    public ArticleAdapter(Activity activity, ArrayList<Article> articles) {
+    Bookmarks mBookmarks;
+
+    public ArticleAdapter(Activity activity, ArrayList<Article> articles, Bookmarks bookmarks) {
         super(activity, 0, articles);
+        mBookmarks = bookmarks;
     }
 
     @NonNull
@@ -28,7 +32,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.news_item, parent, false);
         }
 
-        Article currentArticle = getItem(position);
+        final Article currentArticle = getItem(position);
 
         Utils.fillText(listItemView, R.id.newsHeadline, Utils.capitalize(currentArticle.getArticleTitle()));
 
@@ -38,6 +42,9 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
             newsThumbnail.setImageBitmap(thumbnailImg);
             newsThumbnail.setScaleType(ImageView.ScaleType.CENTER_CROP);
         }
+
+        final ImageButton bookmarkBtn = listItemView.findViewById(R.id.bookmarkBtn);
+        mBookmarks.toggleBookmarkButton(bookmarkBtn, currentArticle);
 
         return listItemView;
     }

@@ -1,5 +1,7 @@
 package com.danieldogeanu.android.newsapp;
 
+import android.widget.ImageButton;
+
 import java.util.ArrayList;
 
 public class Bookmarks {
@@ -40,6 +42,24 @@ public class Bookmarks {
             }
         }
         return bookmarkState;
+    }
+
+    public void toggleBookmarkButton(ImageButton button, Article article) {
+        if (isBookmark(article)) {
+            button.setActivated(true);
+        } else {
+            button.setActivated(false);
+        }
+
+        button.setOnClickListener(view -> {
+            if (!isBookmark(article) && !button.isActivated()) {
+                addArticleToBookmarks(article);
+                button.setActivated(true);
+            } else {
+                removeArticleFromBookmarks(article);
+                button.setActivated(false);
+            }
+        });
     }
 
     @Override

@@ -22,7 +22,6 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
     private static final int LOADER_ID = 1;
 
     private static final String API_URL = "https://content.guardianapis.com/search";
-    private static final String API_KEY = BuildConfig.API_KEY;
 
     private ArticleAdapter mAdapter;
     private View mEmptyStateView;
@@ -43,7 +42,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         isConnected = mActiveNetwork != null && mActiveNetwork.isConnectedOrConnecting();
 
         ListView newsList = findViewById(R.id.newsList);
-        mAdapter = new ArticleAdapter(this, new ArrayList<>());
+        mAdapter = new ArticleAdapter(this, new ArrayList<>(), Bookmarks.getInstance());
         newsList.setAdapter(mAdapter);
 
         mEmptyStateView = findViewById(R.id.emptyState);
@@ -81,7 +80,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         uriBuilder.appendQueryParameter("section", "technology");
         uriBuilder.appendQueryParameter("show-fields", "thumbnail");
         uriBuilder.appendQueryParameter("page-size", "20");
-        uriBuilder.appendQueryParameter("api-key", API_KEY);
+        uriBuilder.appendQueryParameter("api-key", BuildConfig.API_KEY);
 
         return new ArticleLoader(this, uriBuilder.toString());
     }
