@@ -30,6 +30,10 @@ public class Article {
         return mArticlePublishedDate;
     }
 
+    public boolean hasThumbnail() {
+        return !mArticleThumbnailUrl.isEmpty();
+    }
+
     @Override
     public String toString() {
         return "Article {" +
