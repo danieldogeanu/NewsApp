@@ -2,22 +2,14 @@ package com.danieldogeanu.android.newsapp;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.lang.ref.WeakReference;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class ArticleAdapter extends ArrayAdapter<Article> {
@@ -42,47 +34,12 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
         ImageView newsThumbnail = listItemView.findViewById(R.id.newsThumbnail);
         if (currentArticle.hasThumbnail()) {
-            DownloadImageTask task = new DownloadImageTask(newsThumbnail);
-            task.execute(currentArticle.getArticleThumbnailUrl());
+            Bitmap thumbnailImg = currentArticle.getArticleThumbnail();
+            newsThumbnail.setImageBitmap(thumbnailImg);
+            newsThumbnail.setScaleType(ImageView.ScaleType.CENTER_CROP);
         }
 
         return listItemView;
-    }
-
-    // TODO: Make this class to not download every time the ListView is scrolled.
-    private static class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-
-        private WeakReference<ImageView> mImageViewReference;
-
-        public DownloadImageTask(ImageView imageView) {
-            mImageViewReference = new WeakReference<>(imageView);
-        }
-
-        @Override
-        protected Bitmap doInBackground(String... urls) {
-            String imgUrl = urls[0];
-            Bitmap bitmap = null;
-            try {
-                InputStream inputStream = new URL(imgUrl).openStream();
-                bitmap = BitmapFactory.decodeStream(inputStream);
-            } catch (MalformedURLException e) {
-                Log.e(LOG_TAG, "There's a problem with the URL provided.", e);
-            } catch (IOException e) {
-                Log.e(LOG_TAG, "Problem opening Input Stream.", e);
-            }
-            return bitmap;
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap bitmap) {
-            if (mImageViewReference != null) {
-                ImageView imageView = mImageViewReference.get();
-                if ((imageView != null) && (bitmap != null)) {
-                    imageView.setImageBitmap(bitmap);
-                    imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                }
-            }
-        }
     }
 
 }

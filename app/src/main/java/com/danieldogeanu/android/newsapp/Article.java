@@ -1,16 +1,18 @@
 package com.danieldogeanu.android.newsapp;
 
+import android.graphics.Bitmap;
+
 public class Article {
 
     private String mArticleTitle;
     private String mArticleUrl;
-    private String mArticleThumbnailUrl;
+    private Bitmap mArticleThumbnail;
     private String mArticlePublishedDate;
 
-    public Article(String title, String url, String thumbnail, String published) {
+    public Article(String title, String url, Bitmap thumbnail, String published) {
         mArticleTitle = title;
         mArticleUrl = url;
-        mArticleThumbnailUrl = thumbnail;
+        mArticleThumbnail = thumbnail;
         mArticlePublishedDate = published;
     }
 
@@ -22,8 +24,8 @@ public class Article {
         return mArticleUrl;
     }
 
-    public String getArticleThumbnailUrl() {
-        return mArticleThumbnailUrl;
+    public Bitmap getArticleThumbnail() {
+        return mArticleThumbnail;
     }
 
     public String getArticlePublishedDate() {
@@ -31,7 +33,7 @@ public class Article {
     }
 
     public boolean hasThumbnail() {
-        return !mArticleThumbnailUrl.isEmpty();
+        return mArticleThumbnail != null;
     }
 
     @Override
@@ -39,7 +41,7 @@ public class Article {
         return "Article {" +
                 "mArticleTitle='" + mArticleTitle + "', " +
                 "mArticleUrl='" + mArticleUrl + "', " +
-                "mArticleThumbnailUrl='" + mArticleThumbnailUrl + "', " +
+                "mArticleThumbnail='" + mArticleThumbnail.toString() + "', " +
                 "mArticlePublishedDate='" + mArticlePublishedDate + "' " +
                 "}";
     }

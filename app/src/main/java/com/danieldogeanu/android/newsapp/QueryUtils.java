@@ -1,5 +1,7 @@
 package com.danieldogeanu.android.newsapp;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -105,7 +107,7 @@ public final class QueryUtils {
                     String published = currentArticle.getString("webPublicationDate");
                     String title = currentArticle.getString("webTitle");
                     String url = currentArticle.getString("webUrl");
-                    String thumbnail = currentArticle.getJSONObject("fields").getString("thumbnail");
+                    Bitmap thumbnail = downloadImage(currentArticle.getJSONObject("fields").getString("thumbnail"));
 
                     Article article = new Article(title, url, thumbnail, published);
                     articles.add(article);
@@ -116,6 +118,19 @@ public final class QueryUtils {
             Log.e(LOG_TAG, "Problem parsing JSON results.", e);
         }
         return articles;
+    }
+
+    private static Bitmap downloadImage(String imgUrl) {
+        Bitmap bitmap = null;
+        try {
+            InputStream inputStream = new URL(imgUrl).openStream();
+            bitmap = BitmapFactory.decodeStream(inputStream);
+        } catch (MalformedURLException e) {
+            Log.e(LOG_TAG, "There's a problem with the URL provided.", e);
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "Problem opening Input Stream.", e);
+        }
+        return bitmap;
     }
 
 }
