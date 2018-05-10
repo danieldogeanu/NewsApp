@@ -17,7 +17,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
     private static final String LOG_TAG = ArrayAdapter.class.getSimpleName();
 
-    Bookmarks mBookmarks;
+    private Bookmarks mBookmarks;
 
     public ArticleAdapter(Activity activity, ArrayList<Article> articles, Bookmarks bookmarks) {
         super(activity, 0, articles);
@@ -32,7 +32,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.news_item, parent, false);
         }
 
-        final Article currentArticle = getItem(position);
+        Article currentArticle = getItem(position);
 
         Utils.fillText(listItemView, R.id.newsHeadline, Utils.capitalize(currentArticle.getArticleTitle()));
 
@@ -40,10 +40,9 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         if (currentArticle.hasThumbnail()) {
             Bitmap thumbnailImg = currentArticle.getArticleThumbnail();
             newsThumbnail.setImageBitmap(thumbnailImg);
-            newsThumbnail.setScaleType(ImageView.ScaleType.CENTER_CROP);
         }
 
-        final ImageButton bookmarkBtn = listItemView.findViewById(R.id.bookmarkBtn);
+        ImageButton bookmarkBtn = listItemView.findViewById(R.id.bookmarkBtn);
         mBookmarks.toggleBookmarkButton(bookmarkBtn, currentArticle);
 
         return listItemView;
