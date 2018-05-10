@@ -46,10 +46,10 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         newsList.setAdapter(mAdapter);
 
         mEmptyStateView = findViewById(R.id.emptyState);
-        newsList.setEmptyView(mEmptyStateView);
-        mEmptyStateTextView = mEmptyStateView.findViewById(R.id.emptyTxt);
-
+        mEmptyStateTextView = findViewById(R.id.emptyTxt);
         mLoadingIndicator = findViewById(R.id.loadingIndicator);
+
+        newsList.setEmptyView(mEmptyStateView);
 
         newsList.setOnItemClickListener((adapterView, view, i, l) -> {
 
@@ -73,6 +73,8 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public Loader<List<Article>> onCreateLoader(int i, Bundle bundle) {
+        mEmptyStateView.setVisibility(View.GONE);
+
         Uri baseUri = Uri.parse(API_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
