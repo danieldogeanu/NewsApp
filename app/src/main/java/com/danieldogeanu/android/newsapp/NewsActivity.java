@@ -53,17 +53,14 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
         mLoadingIndicator = findViewById(R.id.loadingIndicator);
 
-        newsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        newsList.setOnItemClickListener((adapterView, view, i, l) -> {
 
-                Article currentArticle = mAdapter.getItem(i);
+            Article currentArticle = mAdapter.getItem(i);
 
-                Uri articleUri = Uri.parse(currentArticle.getArticleUrl());
-                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, articleUri);
-                startActivity(websiteIntent);
+            Uri articleUri = Uri.parse(currentArticle.getArticleUrl());
+            Intent websiteIntent = new Intent(Intent.ACTION_VIEW, articleUri);
+            startActivity(websiteIntent);
 
-            }
         });
 
         if (isConnected) {
