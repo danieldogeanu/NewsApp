@@ -10,4 +10,7 @@
 
     <string name="no_articles">No articles found.</string>
     <string name="no_internet">No Internet connection.</string>
+
+    <string name="intent_subject">Check Out This News</string>
+    <string name="intent_title">Share via&#8230;</string>
 </resources>

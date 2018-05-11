@@ -45,6 +45,8 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         ImageButton bookmarkBtn = listItemView.findViewById(R.id.bookmarkBtn);
         mBookmarks.toggleBookmarkButton(bookmarkBtn, currentArticle);
 
+        Utils.attachShareIntent(listItemView, R.id.shareBtn, currentArticle.getArticleUrl());
+
         return listItemView;
     }
 
