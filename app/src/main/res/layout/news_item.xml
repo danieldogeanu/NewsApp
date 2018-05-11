@@ -25,6 +25,11 @@
             app:srcCompat="@drawable/btn_share"
             style="@style/NewsButton" />
 
+        <TextView
+            android:id="@+id/publishedDate"
+            style="@style/NewsPublishedDate"
+            tools:text="May 11, 2018" />
+
     </LinearLayout>
 
     <ImageView

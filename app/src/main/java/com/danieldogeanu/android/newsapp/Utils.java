@@ -2,9 +2,15 @@ package com.danieldogeanu.android.newsapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public final class Utils {
 
@@ -43,6 +49,18 @@ public final class Utils {
             sharingIntent.putExtra(Intent.EXTRA_TEXT, articleUrl);
             listItemView.getContext().startActivity(Intent.createChooser(sharingIntent, title));
         });
+    }
+
+    public static String formatDate(String rawDate) {
+        String unformattedDate = rawDate.substring(0, 10);
+        String formattedDate = "";
+        try {
+            Date date = new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(unformattedDate);
+            formattedDate = new SimpleDateFormat("MMM dd, yyyy", Locale.US).format(date);
+        } catch (ParseException e) {
+            Log.e(LOG_TAG, "Date could not be parsed from the string provided.", e);
+        }
+        return formattedDate;
     }
 
 }

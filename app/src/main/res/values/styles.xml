@@ -64,6 +64,14 @@
         <item name="android:scaleType">centerCrop</item>
     </style>
 
+    <style name="NewsPublishedDate">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textColor">@color/colorLightGray</item>
+    </style>
+
     <style name="EmptyState">
         <item name="android:visibility">gone</item>
         <item name="android:layout_width">match_parent</item>

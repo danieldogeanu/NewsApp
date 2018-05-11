@@ -47,6 +47,8 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
         Utils.attachShareIntent(listItemView, R.id.shareBtn, currentArticle.getArticleUrl());
 
+        Utils.fillText(listItemView, R.id.publishedDate, Utils.formatDate(currentArticle.getArticlePublishedDate()));
+
         return listItemView;
     }
 
