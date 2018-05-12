@@ -7,8 +7,5 @@
         android:state_pressed="true"
         android:drawable="@drawable/ic_share_active" />
     <item
-        android:state_active="true"
-        android:drawable="@drawable/ic_share_active" />
-    <item
         android:drawable="@drawable/ic_share" />
 </selector>
