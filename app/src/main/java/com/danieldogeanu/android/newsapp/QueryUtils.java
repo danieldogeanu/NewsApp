@@ -136,12 +136,14 @@ public final class QueryUtils {
                 for (int i = 0; i < articleArray.length(); i++) {
                     JSONObject currentArticle = articleArray.getJSONObject(i);
 
+                    String section = currentArticle.getString("sectionName");
                     String published = currentArticle.getString("webPublicationDate");
                     String title = currentArticle.getString("webTitle");
                     String url = currentArticle.getString("webUrl");
                     Bitmap thumbnail = downloadImage(currentArticle.getJSONObject("fields").getString("thumbnail"));
+                    String author = currentArticle.getJSONArray("tags").getJSONObject(0).getString("webTitle");
 
-                    articles.add(new Article(title, url, thumbnail, published));
+                    articles.add(new Article(title, url, thumbnail, published, author, section));
                 }
             }
         } catch (JSONException e) {
