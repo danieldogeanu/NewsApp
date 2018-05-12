@@ -11,6 +11,8 @@ public class Article {
     private String mArticleUrl;
     private Bitmap mArticleThumbnail;
     private String mArticlePublishedDate;
+    private String mArticleAuthor;
+    private String mArticleSection;
 
     /**
      * The Article object constructor.
@@ -18,12 +20,16 @@ public class Article {
      * @param url The URL of the article.
      * @param thumbnail The thumbnail (bitmap) of the article.
      * @param published The date when the article was published.
+     * @param author The name of the author which wrote the article.
+     * @param section The section in which the article belongs.
      */
-    public Article(String title, String url, Bitmap thumbnail, String published) {
+    public Article(String title, String url, Bitmap thumbnail, String published, String author, String section) {
         mArticleTitle = title;
         mArticleUrl = url;
         mArticleThumbnail = thumbnail;
         mArticlePublishedDate = published;
+        mArticleAuthor = author;
+        mArticleSection = section;
     }
 
     /** @return Returns the article title. */
@@ -46,6 +52,16 @@ public class Article {
         return mArticlePublishedDate;
     }
 
+    /** @return Returns the name of the article author. */
+    public String getArticleAuthor() {
+        return mArticleAuthor;
+    }
+
+    /** @return Returns the section of which the article belongs. */
+    public String getArticleSection() {
+        return mArticleSection;
+    }
+
     /** @return Checks to see if the article has a thumbnail and returns a boolean. */
     public boolean hasThumbnail() {
         return mArticleThumbnail != null;
@@ -62,6 +78,8 @@ public class Article {
                 "mArticleUrl='" + mArticleUrl + "', " +
                 "mArticleThumbnail='" + mArticleThumbnail.toString() + "', " +
                 "mArticlePublishedDate='" + mArticlePublishedDate + "' " +
+                "mArticleAuthor='" + mArticleAuthor + "' " +
+                "mArticleSection='" + mArticleSection + "' " +
                 "}";
     }
 }
