@@ -114,6 +114,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         uriBuilder.appendQueryParameter("section", "technology");
         uriBuilder.appendQueryParameter("show-fields", "thumbnail");
         uriBuilder.appendQueryParameter("page-size", "20");
+        uriBuilder.appendQueryParameter("pages", "1");
         uriBuilder.appendQueryParameter("api-key", BuildConfig.API_KEY);
 
         // Pass the URL to the ArticleLoader.
