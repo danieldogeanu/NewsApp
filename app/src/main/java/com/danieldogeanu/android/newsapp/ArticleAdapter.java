@@ -1,7 +1,6 @@
 package com.danieldogeanu.android.newsapp;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -10,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -43,37 +43,55 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        // Get or inflate the News Item layout.
-        View listItemView = convertView;
-        if (listItemView == null) {
-            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.news_item, parent, false);
+        ViewHolder viewHolder;
+
+        if (convertView == null) {
+            // Inflate the News Item layout.
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.news_item, parent, false);
+            // Initialize the ViewHolder.
+            viewHolder = new ViewHolder();
+            // Find all necessary Views in the News Item layout.
+            viewHolder.newsHeadline = convertView.findViewById(R.id.newsHeadline);
+            viewHolder.publishedDate = convertView.findViewById(R.id.publishedDate);
+            viewHolder.bookmarkBtn = convertView.findViewById(R.id.bookmarkBtn);
+            viewHolder.shareBtn = convertView.findViewById(R.id.shareBtn);
+            viewHolder.newsThumbnail = convertView.findViewById(R.id.newsThumbnail);
+            // Add ViewHolder as a Tag on the News Item layout.
+            convertView.setTag(viewHolder);
+        } else {
+            // Restore ViewHolder from Tag.
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
         // Get current Article object from the ArrayList.
         Article currentArticle = getItem(position);
 
         // Set the Article title.
-        Utils.fillText(listItemView, R.id.newsHeadline, Utils.capitalize(currentArticle.getArticleTitle()));
+        viewHolder.newsHeadline.setText(Utils.capitalize(currentArticle.getArticleTitle()));
 
         // Set the Article thumbnail.
-        ImageView newsThumbnail = listItemView.findViewById(R.id.newsThumbnail);
         if (currentArticle.hasThumbnail()) {
-            Bitmap thumbnailImg = currentArticle.getArticleThumbnail();
-            newsThumbnail.setImageBitmap(thumbnailImg);
+            viewHolder.newsThumbnail.setImageBitmap(currentArticle.getArticleThumbnail());
         }
 
         // Set the OnClickListener for the Bookmark button.
-        ImageButton bookmarkBtn = listItemView.findViewById(R.id.bookmarkBtn);
-        mBookmarks.toggleBookmarkButton(bookmarkBtn, currentArticle);
+        mBookmarks.toggleBookmarkButton(viewHolder.bookmarkBtn, currentArticle);
 
         // Attach the Share Intent to the Share button.
-        Utils.attachShareIntent(listItemView, R.id.shareBtn, currentArticle.getArticleUrl());
+        Utils.attachShareIntent(convertView.getContext(), viewHolder.shareBtn, currentArticle.getArticleUrl());
 
         // Set the published date of the Article.
-        Utils.fillText(listItemView, R.id.publishedDate, Utils.formatDate(currentArticle.getArticlePublishedDate()));
+        viewHolder.publishedDate.setText(Utils.formatDate(currentArticle.getArticlePublishedDate()));
 
         // Return the fully assembled News Item.
-        return listItemView;
+        return convertView;
+    }
+
+    /** Private inner class that stores all the views necessary to the News Item. */
+    private static class ViewHolder {
+        private TextView newsHeadline, publishedDate;
+        private ImageButton bookmarkBtn, shareBtn;
+        private ImageView newsThumbnail;
     }
 
 }

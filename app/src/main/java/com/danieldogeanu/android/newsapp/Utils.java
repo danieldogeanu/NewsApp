@@ -1,10 +1,9 @@
 package com.danieldogeanu.android.newsapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -38,32 +37,20 @@ public final class Utils {
     }
 
     /**
-     * Method to set the text to the selected TextView.
-     * @param view The ListItemView for which this method is called. Used to find the TextView.
-     * @param id The ID of the TextView.
-     * @param text The text to set to the TextView.
+     * Method to attach a Share Intent to the Share Button.
+     * @param context The context from which this method is called.
+     * @param button The button to attach the OnClickListener and Intent to.
+     * @param url The URL of the Article to share.
      */
-    public static void fillText(View view, int id, CharSequence text) {
-        TextView thisTextView = view.findViewById(id);
-        thisTextView.setText(text);
-    }
-
-    /**
-     * Method to attach a Share Intent to the Share button.
-     * @param listItemView The ListItemView from which this method is called.
-     * @param buttonId The button ID to attach the Intent to.
-     * @param articleUrl The URL of the Article to share.
-     */
-    public static void attachShareIntent(View listItemView, int buttonId, String articleUrl) {
-        ImageButton button = listItemView.findViewById(buttonId);
-        String subject = listItemView.getResources().getString(R.string.intent_subject);
-        String title = listItemView.getResources().getString(R.string.intent_title);
+    public static void attachShareIntent(Context context, ImageButton button, String url) {
+        String subject = context.getResources().getString(R.string.intent_subject);
+        String title = context.getResources().getString(R.string.intent_title);
         button.setOnClickListener(view -> {
             Intent sharingIntent = new Intent(Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
             sharingIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
-            sharingIntent.putExtra(Intent.EXTRA_TEXT, articleUrl);
-            listItemView.getContext().startActivity(Intent.createChooser(sharingIntent, title));
+            sharingIntent.putExtra(Intent.EXTRA_TEXT, url);
+            context.startActivity(Intent.createChooser(sharingIntent, title));
         });
     }
 
