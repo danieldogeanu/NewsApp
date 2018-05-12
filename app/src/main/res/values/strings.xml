@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">News App</string>
 
-    <string name="placeholder_headline">The main article headline goes here and occupies three rows</string>
+    <string name="placeholder_section">Section</string>
+    <string name="placeholder_headline">Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus</string>
+    <string name="placeholder_author_date">John Doe &#8211; May 12, 2018</string>
+
+    <string name="em_dash">&#8211;</string>
 
     <string name="cd_news_thumb">Article Thumbnail</string>
     <string name="cd_bookmark_btn">Bookmark</string>

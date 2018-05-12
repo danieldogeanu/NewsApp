@@ -67,6 +67,11 @@ public class Article {
         return mArticleThumbnail != null;
     }
 
+    /** @return Checks to see if the article has an author assigned. */
+    public boolean hasAuthor() {
+        return (mArticleAuthor != null) && !mArticleAuthor.isEmpty();
+    }
+
     /**
      * Overrides the toString() method for debug purposes.
      * @return Returns a concatenated string with all the fields contents.

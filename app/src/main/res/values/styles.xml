@@ -19,19 +19,39 @@
 
     <style name="NewsItem">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">132dp</item>
-        <item name="android:padding">16dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">18dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingBottom">12dp</item>
         <item name="android:clickable">false</item>
         <item name="android:focusable">false</item>
         <item name="android:focusableInTouchMode">false</item>
         <item name="android:descendantFocusability">blocksDescendants</item>
     </style>
 
+    <style name="NewsSectionName">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:layout_toStartOf">@id/newsThumbnail</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/colorLightGray</item>
+    </style>
+
+    <style name="NewsTopSeparator" parent="NewsSectionName">
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+    </style>
+
     <style name="NewsHeadline">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_alignParentTop">true</item>
         <item name="android:layout_alignParentStart">true</item>
+        <item name="android:layout_below">@id/sectionName</item>
         <item name="android:layout_toStartOf">@id/newsThumbnail</item>
         <item name="android:fontFamily">sans-serif-regular</item>
         <item name="android:textSize">16sp</item>
@@ -39,14 +59,13 @@
         <item name="android:maxLines">3</item>
     </style>
 
-    <style name="NewsButtonsContainer">
+    <style name="NewsBottomContainer">
         <item name="android:orientation">horizontal</item>
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">-14dp</item>
         <item name="android:layout_alignParentStart">true</item>
-        <item name="android:layout_alignParentBottom">true</item>
-        <item name="android:layout_toStartOf">@id/newsThumbnail</item>
+        <item name="android:layout_below">@id/newsThumbnail</item>
     </style>
 
     <style name="NewsButton">
@@ -56,19 +75,21 @@
     </style>
 
     <style name="NewsThumbnail">
-        <item name="android:layout_width">100dp</item>
-        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">80dp</item>
         <item name="android:layout_marginStart">10dp</item>
         <item name="android:layout_alignParentEnd">true</item>
         <item name="android:layout_alignParentTop">true</item>
         <item name="android:scaleType">centerCrop</item>
     </style>
 
-    <style name="NewsPublishedDate">
-        <item name="android:layout_width">wrap_content</item>
+    <style name="NewsAuthorAndDate">
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingStart">10dp</item>
         <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:gravity">right</item>
         <item name="android:textColor">@color/colorLightGray</item>
     </style>
 

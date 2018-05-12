@@ -2,21 +2,13 @@ package com.danieldogeanu.android.newsapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.widget.ImageButton;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import android.widget.TextView;
 
 /**
  * Class that contains general utility methods to be used across the app.
  */
 public final class Utils {
-
-    // Constant used for debugging.
-    private static final String LOG_TAG = Utils.class.getSimpleName();
 
     /** Private constructor, so we can't instantiate the class. */
     private Utils() {}
@@ -55,20 +47,20 @@ public final class Utils {
     }
 
     /**
-     * Method to convert and format the date for each Article.
-     * @param rawDate The input raw date string.
-     * @return Returns the proper formatted date string to be displayed for each Article.
+     * Method to compose the string for the Author-and-Date TextView.
+     * @param context The Context from which this method is called.
+     * @param view The TextView to set the text to.
+     * @param article The Article to extract the date and author from.
      */
-    public static String formatDate(String rawDate) {
-        String unformattedDate = rawDate.substring(0, 10);
-        String formattedDate = "";
-        try {
-            Date date = new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(unformattedDate);
-            formattedDate = new SimpleDateFormat("MMM dd, yyyy", Locale.US).format(date);
-        } catch (ParseException e) {
-            Log.e(LOG_TAG, "Date could not be parsed from the string provided.", e);
+    public static void composeAuthorDate(Context context, TextView view, Article article) {
+        String emDash = context.getResources().getString(R.string.em_dash);
+        String composedString;
+        if (article.hasAuthor()) {
+            composedString = capitalize(article.getArticleAuthor()) + "  " + emDash + "  " + article.getArticlePublishedDate();
+        } else {
+            composedString = article.getArticlePublishedDate();
         }
-        return formattedDate;
+        view.setText(composedString);
     }
 
 }

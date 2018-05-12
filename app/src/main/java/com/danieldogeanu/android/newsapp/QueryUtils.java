@@ -17,8 +17,12 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Class that contains utility methods to query the API URL.
@@ -137,7 +141,7 @@ public final class QueryUtils {
                     JSONObject currentArticle = articleArray.getJSONObject(i);
 
                     String section = currentArticle.getString("sectionName");
-                    String published = currentArticle.getString("webPublicationDate");
+                    String published = formatDate(currentArticle.getString("webPublicationDate"));
                     String title = currentArticle.getString("webTitle");
                     String url = currentArticle.getString("webUrl");
                     Bitmap thumbnail = downloadImage(currentArticle.getJSONObject("fields").getString("thumbnail"));
@@ -150,6 +154,23 @@ public final class QueryUtils {
             Log.e(LOG_TAG, "Problem parsing JSON results.", e);
         }
         return articles;
+    }
+
+    /**
+     * Method to convert and format the date for each Article.
+     * @param rawDate The input raw date string.
+     * @return Returns the proper formatted date string to be displayed for each Article.
+     */
+    private static String formatDate(String rawDate) {
+        String unformattedDate = rawDate.substring(0, 10);
+        String formattedDate = "";
+        try {
+            Date date = new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(unformattedDate);
+            formattedDate = new SimpleDateFormat("MMM dd, yyyy", Locale.US).format(date);
+        } catch (ParseException e) {
+            Log.e(LOG_TAG, "Date could not be parsed from the string provided.", e);
+        }
+        return formattedDate;
     }
 
     /**

@@ -5,13 +5,24 @@
     style="@style/NewsItem">
 
     <TextView
+        android:id="@+id/sectionName"
+        tools:text="@string/placeholder_section"
+        style="@style/NewsSectionName" />
+
+    <TextView
         android:id="@+id/newsHeadline"
         tools:text="@string/placeholder_headline"
         style="@style/NewsHeadline" />
 
+    <ImageView
+        android:id="@+id/newsThumbnail"
+        android:contentDescription="@string/cd_news_thumb"
+        android:src="@drawable/placeholder"
+        style="@style/NewsThumbnail" />
+
     <LinearLayout
         android:id="@+id/newsButtons"
-        style="@style/NewsButtonsContainer">
+        style="@style/NewsBottomContainer">
 
         <ImageButton
             android:id="@+id/bookmarkBtn"
@@ -26,16 +37,11 @@
             style="@style/NewsButton" />
 
         <TextView
-            android:id="@+id/publishedDate"
-            style="@style/NewsPublishedDate"
-            tools:text="May 11, 2018" />
+            android:id="@+id/authorAndDate"
+            tools:text="@string/placeholder_author_date"
+            style="@style/NewsAuthorAndDate" />
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/newsThumbnail"
-        android:contentDescription="@string/cd_news_thumb"
-        android:src="@drawable/placeholder"
-        style="@style/NewsThumbnail" />
 
 </RelativeLayout>

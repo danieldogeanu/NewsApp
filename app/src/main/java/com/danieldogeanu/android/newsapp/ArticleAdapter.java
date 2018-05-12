@@ -51,11 +51,12 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
             // Initialize the ViewHolder.
             viewHolder = new ViewHolder();
             // Find all necessary Views in the News Item layout.
+            viewHolder.sectionName = convertView.findViewById(R.id.sectionName);
             viewHolder.newsHeadline = convertView.findViewById(R.id.newsHeadline);
-            viewHolder.publishedDate = convertView.findViewById(R.id.publishedDate);
             viewHolder.bookmarkBtn = convertView.findViewById(R.id.bookmarkBtn);
             viewHolder.shareBtn = convertView.findViewById(R.id.shareBtn);
             viewHolder.newsThumbnail = convertView.findViewById(R.id.newsThumbnail);
+            viewHolder.authorAndDate = convertView.findViewById(R.id.authorAndDate);
             // Add ViewHolder as a Tag on the News Item layout.
             convertView.setTag(viewHolder);
         } else {
@@ -65,6 +66,9 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
         // Get current Article object from the ArrayList.
         Article currentArticle = getItem(position);
+
+        // Set the Section name.
+        viewHolder.sectionName.setText(currentArticle.getArticleSection());
 
         // Set the Article title.
         viewHolder.newsHeadline.setText(Utils.capitalize(currentArticle.getArticleTitle()));
@@ -80,8 +84,8 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         // Attach the Share Intent to the Share button.
         Utils.attachShareIntent(convertView.getContext(), viewHolder.shareBtn, currentArticle.getArticleUrl());
 
-        // Set the published date of the Article.
-        viewHolder.publishedDate.setText(Utils.formatDate(currentArticle.getArticlePublishedDate()));
+        // Set the name of the author and the published date of the Article.
+        Utils.composeAuthorDate(convertView.getContext(), viewHolder.authorAndDate, currentArticle);
 
         // Return the fully assembled News Item.
         return convertView;
@@ -89,7 +93,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
     /** Private inner class that stores all the views necessary to the News Item. */
     private static class ViewHolder {
-        private TextView newsHeadline, publishedDate;
+        private TextView sectionName, newsHeadline, authorAndDate;
         private ImageButton bookmarkBtn, shareBtn;
         private ImageView newsThumbnail;
     }
