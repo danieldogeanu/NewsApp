@@ -20,12 +20,22 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class that contains utility methods to query the API URL.
+ */
 public final class QueryUtils {
 
+    // Constant used for debugging.
     private static final String LOG_TAG = QueryUtils.class.getSimpleName();
 
+    /** Private constructor, so we can't instantiate the class. */
     private QueryUtils() {}
 
+    /**
+     * Method that makes the HTTP request in order to retrieve the articles from the given URL.
+     * @param requestUrl The API URL to make the request to.
+     * @return Returns a list with articles retrieved from the URL.
+     */
     public static List<Article> fetchNews(String requestUrl) {
         URL url = createUrl(requestUrl);
         String jsonResponse = null;
@@ -37,6 +47,11 @@ public final class QueryUtils {
         return extractArticleFromJson(jsonResponse);
     }
 
+    /**
+     * Method to create the URL from a string.
+     * @param stringUrl The string from which to create the URL.
+     * @return Returns the created URL object.
+     */
     private static URL createUrl(String stringUrl) {
         URL url = null;
         try {
@@ -47,6 +62,12 @@ public final class QueryUtils {
         return url;
     }
 
+    /**
+     * Method to make the HTTP request to the provided URL.
+     * @param url The URL to make the HTTP request to.
+     * @return Returns the JSON response from the HTTP request.
+     * @throws IOException Throws IOException if it can't retrieve the JSON response.
+     */
     private static String makeHttpRequest(URL url) throws IOException {
         String jsonResponse = "";
         if (url == null) return jsonResponse;
@@ -75,6 +96,12 @@ public final class QueryUtils {
         return jsonResponse;
     }
 
+    /**
+     * Method to read from the InputStream of the HTTP request and build the JSON string.
+     * @param inputStream The InputStream to read from.
+     * @return Returns the built JSON string.
+     * @throws IOException Throws IOException if it can't read from the InputStream.
+     */
     private static String readFromStream(InputStream inputStream) throws IOException {
         StringBuilder output = new StringBuilder();
         if (inputStream != null) {
@@ -89,6 +116,11 @@ public final class QueryUtils {
         return output.toString();
     }
 
+    /**
+     * Method to extract Articles from the JSON string provided.
+     * @param stringJson The JSON string to extract articles from.
+     * @return Returns the list with the extracted articles.
+     */
     private static List<Article> extractArticleFromJson(String stringJson) {
         if (TextUtils.isEmpty(stringJson)) return null;
 
@@ -118,6 +150,11 @@ public final class QueryUtils {
         return articles;
     }
 
+    /**
+     * Method to download the thumbnail image and convert it to Bitmap.
+     * @param imgUrl The URL from which to download the image.
+     * @return Returns the Bitmap to be used as thumbnail for the Article.
+     */
     private static Bitmap downloadImage(String imgUrl) {
         Bitmap bitmap = null;
         try {

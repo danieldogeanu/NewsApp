@@ -11,12 +11,22 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+/**
+ * Class that contains general utility methods to be used across the app.
+ */
 public final class Utils {
 
+    // Constant used for debugging.
     private static final String LOG_TAG = Utils.class.getSimpleName();
 
+    /** Private constructor, so we can't instantiate the class. */
     private Utils() {}
 
+    /**
+     * Method to capitalize given strings. Used to capitalize Article titles.
+     * @param string The string to capitalize.
+     * @return Returns the capitalized string.
+     */
     public static String capitalize(String string) {
         String[] strArray = string.split(" ");
         StringBuilder builder = new StringBuilder();
@@ -27,11 +37,23 @@ public final class Utils {
         return builder.toString();
     }
 
+    /**
+     * Method to set the text to the selected TextView.
+     * @param view The ListItemView for which this method is called. Used to find the TextView.
+     * @param id The ID of the TextView.
+     * @param text The text to set to the TextView.
+     */
     public static void fillText(View view, int id, CharSequence text) {
         TextView thisTextView = view.findViewById(id);
         thisTextView.setText(text);
     }
 
+    /**
+     * Method to attach a Share Intent to the Share button.
+     * @param listItemView The ListItemView from which this method is called.
+     * @param buttonId The button ID to attach the Intent to.
+     * @param articleUrl The URL of the Article to share.
+     */
     public static void attachShareIntent(View listItemView, int buttonId, String articleUrl) {
         ImageButton button = listItemView.findViewById(buttonId);
         String subject = listItemView.getResources().getString(R.string.intent_subject);
@@ -45,6 +67,11 @@ public final class Utils {
         });
     }
 
+    /**
+     * Method to convert and format the date for each Article.
+     * @param rawDate The input raw date string.
+     * @return Returns the proper formatted date string to be displayed for each Article.
+     */
     public static String formatDate(String rawDate) {
         String unformattedDate = rawDate.substring(0, 10);
         String formattedDate = "";
