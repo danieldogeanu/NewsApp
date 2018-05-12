@@ -15,8 +15,6 @@ import java.util.ArrayList;
 
 public class ArticleAdapter extends ArrayAdapter<Article> {
 
-    private static final String LOG_TAG = ArrayAdapter.class.getSimpleName();
-
     private Bookmarks mBookmarks;
 
     public ArticleAdapter(Activity activity, ArrayList<Article> articles, Bookmarks bookmarks) {

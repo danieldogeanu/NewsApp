@@ -18,13 +18,13 @@ public class Bookmarks {
         return(INSTANCE);
     }
 
-    public void addArticleToBookmarks(Article article) {
+    private void addArticleToBookmarks(Article article) {
         if ((article != null) && !isBookmark(article)) {
             mBookmarks.add(article);
         }
     }
 
-    public void removeArticleFromBookmarks(Article article) {
+    private void removeArticleFromBookmarks(Article article) {
         for (int i = 0; i < mBookmarks.size(); i++) {
             Article currentArticle = mBookmarks.get(i);
             if (currentArticle.getArticleTitle().equals(article.getArticleTitle())) {
@@ -33,7 +33,7 @@ public class Bookmarks {
         }
     }
 
-    public boolean isBookmark(Article article) {
+    private boolean isBookmark(Article article) {
         boolean bookmarkState = false;
         for (int i = 0; i < mBookmarks.size(); i++) {
             Article currentArticle = mBookmarks.get(i);

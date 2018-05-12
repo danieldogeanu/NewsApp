@@ -9,6 +9,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,22 +25,18 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
     private static final String API_URL = "https://content.guardianapis.com/search";
 
     private ArticleAdapter mAdapter;
-    private View mEmptyStateView;
+    private View mEmptyStateView, mLoadingIndicator;
     private TextView mEmptyStateTextView;
-    private View mLoadingIndicator;
-
-    private ConnectivityManager mConnectivityManager;
-    private NetworkInfo mActiveNetwork;
-    private boolean isConnected;
+    private String mNoInternetMsg, mNoArticlesMsg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
-        mConnectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        mActiveNetwork = mConnectivityManager.getActiveNetworkInfo();
-        isConnected = mActiveNetwork != null && mActiveNetwork.isConnectedOrConnecting();
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
+        boolean isConnected = (activeNetwork != null) && activeNetwork.isConnectedOrConnecting();
 
         ListView newsList = findViewById(R.id.newsList);
         mAdapter = new ArticleAdapter(this, new ArrayList<>(), Bookmarks.getInstance());
@@ -48,6 +45,9 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         mEmptyStateView = findViewById(R.id.emptyState);
         mEmptyStateTextView = findViewById(R.id.emptyTxt);
         mLoadingIndicator = findViewById(R.id.loadingIndicator);
+
+        mNoArticlesMsg = getString(R.string.no_articles);
+        mNoInternetMsg = getString(R.string.no_internet);
 
         newsList.setEmptyView(mEmptyStateView);
 
@@ -66,7 +66,8 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
             loaderManager.initLoader(LOADER_ID, null, this);
         } else {
             mLoadingIndicator.setVisibility(View.GONE);
-            mEmptyStateTextView.setText(R.string.no_internet);
+            mEmptyStateTextView.setText(mNoInternetMsg);
+            Log.e(LOG_TAG, mNoInternetMsg);
         }
 
     }
@@ -90,12 +91,11 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoadFinished(Loader<List<Article>> loader, List<Article> articles) {
         mLoadingIndicator.setVisibility(View.GONE);
-        mEmptyStateTextView.setText(R.string.no_articles);
+        mEmptyStateTextView.setText(mNoArticlesMsg);
 
         mAdapter.clear();
-        if (articles != null && !articles.isEmpty()) {
-            mAdapter.addAll(articles);
-        }
+        if (articles != null && !articles.isEmpty()) mAdapter.addAll(articles);
+        if (articles == null || articles.isEmpty()) Log.e(LOG_TAG, mNoArticlesMsg);
     }
 
     @Override

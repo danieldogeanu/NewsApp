@@ -1,6 +1,5 @@
 package com.danieldogeanu.android.newsapp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
@@ -14,7 +13,7 @@ import java.util.Locale;
 
 public final class Utils {
 
-    public static final String LOG_TAG = Utils.class.getSimpleName();
+    private static final String LOG_TAG = Utils.class.getSimpleName();
 
     private Utils() {}
 
@@ -26,11 +25,6 @@ public final class Utils {
             builder.append(cap).append(" ");
         }
         return builder.toString();
-    }
-
-    public static void fillText(Activity activity, int id, CharSequence text) {
-        TextView thisTextView = activity.findViewById(id);
-        thisTextView.setText(text);
     }
 
     public static void fillText(View view, int id, CharSequence text) {

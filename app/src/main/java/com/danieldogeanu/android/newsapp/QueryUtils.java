@@ -109,11 +109,9 @@ public final class QueryUtils {
                     String url = currentArticle.getString("webUrl");
                     Bitmap thumbnail = downloadImage(currentArticle.getJSONObject("fields").getString("thumbnail"));
 
-                    Article article = new Article(title, url, thumbnail, published);
-                    articles.add(article);
+                    articles.add(new Article(title, url, thumbnail, published));
                 }
             }
-
         } catch (JSONException e) {
             Log.e(LOG_TAG, "Problem parsing JSON results.", e);
         }

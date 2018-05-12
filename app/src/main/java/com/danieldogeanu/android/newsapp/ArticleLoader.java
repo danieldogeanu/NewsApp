@@ -7,8 +7,6 @@ import java.util.List;
 
 public class ArticleLoader extends AsyncTaskLoader<List<Article>> {
 
-    private static final String LOG_TAG = ArticleLoader.class.getSimpleName();
-
     private String mUrl;
 
     public ArticleLoader(Context context, String url) {
