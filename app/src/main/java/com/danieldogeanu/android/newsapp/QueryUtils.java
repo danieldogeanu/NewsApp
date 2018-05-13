@@ -145,7 +145,9 @@ public final class QueryUtils {
                     String title = currentArticle.getString("webTitle");
                     String url = currentArticle.getString("webUrl");
                     Bitmap thumbnail = downloadImage(currentArticle.getJSONObject("fields").getString("thumbnail"));
-                    String author = currentArticle.getJSONArray("tags").getJSONObject(0).getString("webTitle");
+                    JSONArray tags = currentArticle.getJSONArray("tags");
+                    String author = "";
+                    if (tags.length() > 0) author = tags.getJSONObject(0).getString("webTitle");
 
                     articles.add(new Article(title, url, thumbnail, published, author, section));
                 }
