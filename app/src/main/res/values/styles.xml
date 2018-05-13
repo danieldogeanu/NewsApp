@@ -91,6 +91,8 @@
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:gravity">right</item>
         <item name="android:textColor">@color/colorLightGray</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:maxLines">1</item>
     </style>
 
     <style name="EmptyState">
