@@ -12,8 +12,8 @@
     <string name="cd_share_btn">Share</string>
     <string name="cd_empty_state_img">Empty State Image</string>
 
-    <string name="no_articles">No articles found.</string>
-    <string name="no_internet">No Internet connection.</string>
+    <string name="no_articles">We couldn\'t retrieve any articles.\nThe server might be too busy.\nPlease try again later.</string>
+    <string name="no_internet">No Internet connection.\nPlease make sure your Internet\nconnection is turned on.</string>
 
     <string name="intent_subject">Check Out This News</string>
     <string name="intent_title">Share via&#8230;</string>
