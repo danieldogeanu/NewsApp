@@ -4,12 +4,12 @@
     style="@style/EmptyStateContainer">
 
     <ImageView
-        android:id="@+id/emptyImg"
+        android:id="@+id/empty_image_view"
         android:contentDescription="@string/cd_empty_state_img"
         style="@style/EmptyStateImage" />
 
     <TextView
-        android:id="@+id/emptyTxt"
+        android:id="@+id/empty_text_view"
         style="@style/EmptyStateText"
         tools:text="@string/no_internet"/>
 

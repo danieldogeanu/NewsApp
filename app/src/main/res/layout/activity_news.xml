@@ -6,16 +6,16 @@
     tools:context=".NewsActivity">
 
     <ListView
-        android:id="@+id/newsList"
+        android:id="@+id/news_list_view"
         style="@style/NewsList" />
 
     <include
-        android:id="@+id/emptyState"
+        android:id="@+id/empty_state_view"
         style="@style/EmptyState"
         layout="@layout/empty_state" />
 
     <ProgressBar
-        android:id="@+id/loadingIndicator"
+        android:id="@+id/loading_indicator"
         style="@style/LoadingIndicator" />
 
 </RelativeLayout>

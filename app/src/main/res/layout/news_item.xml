@@ -5,39 +5,39 @@
     style="@style/NewsItem">
 
     <TextView
-        android:id="@+id/sectionName"
+        android:id="@+id/section_name_tv"
         tools:text="@string/placeholder_section"
         style="@style/NewsSectionName" />
 
     <TextView
-        android:id="@+id/newsHeadline"
+        android:id="@+id/news_headline_tv"
         tools:text="@string/placeholder_headline"
         style="@style/NewsHeadline" />
 
     <ImageView
-        android:id="@+id/newsThumbnail"
+        android:id="@+id/news_thumbnail_iv"
         android:contentDescription="@string/cd_news_thumb"
         android:src="@drawable/placeholder"
         style="@style/NewsThumbnail" />
 
     <LinearLayout
-        android:id="@+id/newsButtons"
+        android:id="@+id/news_bottom_bar"
         style="@style/NewsBottomContainer">
 
         <ImageButton
-            android:id="@+id/bookmarkBtn"
+            android:id="@+id/bookmark_img_btn"
             android:contentDescription="@string/cd_bookmark_btn"
             app:srcCompat="@drawable/btn_bookmark"
             style="@style/NewsButton" />
 
         <ImageButton
-            android:id="@+id/shareBtn"
+            android:id="@+id/share_img_btn"
             android:contentDescription="@string/cd_share_btn"
             app:srcCompat="@drawable/btn_share"
             style="@style/NewsButton" />
 
         <TextView
-            android:id="@+id/authorAndDate"
+            android:id="@+id/author_and_date_tv"
             tools:text="@string/placeholder_author_date"
             style="@style/NewsAuthorAndDate" />
 

@@ -52,14 +52,14 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         boolean isConnected = (activeNetwork != null) && activeNetwork.isConnectedOrConnecting();
 
         // Initialize the Adapter.
-        ListView newsList = findViewById(R.id.newsList);
+        ListView newsList = findViewById(R.id.news_list_view);
         mAdapter = new ArticleAdapter(this, new ArrayList<>(), Bookmarks.getInstance());
         newsList.setAdapter(mAdapter);
 
         // Find required views.
-        mEmptyStateView = findViewById(R.id.emptyState);
-        mEmptyStateTextView = findViewById(R.id.emptyTxt);
-        mLoadingIndicator = findViewById(R.id.loadingIndicator);
+        mEmptyStateView = findViewById(R.id.empty_state_view);
+        mEmptyStateTextView = findViewById(R.id.empty_text_view);
+        mLoadingIndicator = findViewById(R.id.loading_indicator);
 
         // Get the error messages strings.
         mNoArticlesMsg = getString(R.string.no_articles);

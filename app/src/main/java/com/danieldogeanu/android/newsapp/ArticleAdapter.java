@@ -51,12 +51,12 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
             // Initialize the ViewHolder.
             viewHolder = new ViewHolder();
             // Find all necessary Views in the News Item layout.
-            viewHolder.sectionName = convertView.findViewById(R.id.sectionName);
-            viewHolder.newsHeadline = convertView.findViewById(R.id.newsHeadline);
-            viewHolder.bookmarkBtn = convertView.findViewById(R.id.bookmarkBtn);
-            viewHolder.shareBtn = convertView.findViewById(R.id.shareBtn);
-            viewHolder.newsThumbnail = convertView.findViewById(R.id.newsThumbnail);
-            viewHolder.authorAndDate = convertView.findViewById(R.id.authorAndDate);
+            viewHolder.sectionName = convertView.findViewById(R.id.section_name_tv);
+            viewHolder.newsHeadline = convertView.findViewById(R.id.news_headline_tv);
+            viewHolder.bookmarkBtn = convertView.findViewById(R.id.bookmark_img_btn);
+            viewHolder.shareBtn = convertView.findViewById(R.id.share_img_btn);
+            viewHolder.newsThumbnail = convertView.findViewById(R.id.news_thumbnail_iv);
+            viewHolder.authorAndDate = convertView.findViewById(R.id.author_and_date_tv);
             // Add ViewHolder as a Tag on the News Item layout.
             convertView.setTag(viewHolder);
         } else {
