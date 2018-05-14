@@ -144,12 +144,24 @@ public final class QueryUtils {
                     String published = formatDate(currentArticle.getString("webPublicationDate"));
                     String title = currentArticle.getString("webTitle");
                     String url = currentArticle.getString("webUrl");
-                    Bitmap thumbnail = downloadImage(currentArticle.getJSONObject("fields").getString("thumbnail"));
-                    JSONArray tags = currentArticle.getJSONArray("tags");
-                    String author = "";
-                    if (tags.length() > 0) author = tags.getJSONObject(0).getString("webTitle");
 
-                    articles.add(new Article(title, url, thumbnail, published, author, section));
+                    JSONObject fields = currentArticle.optJSONObject("fields");
+                    JSONArray tags = currentArticle.optJSONArray("tags");
+
+                    String thumbnail;
+                    Bitmap bitmap = null;
+                    if (fields.has("thumbnail")) {
+                        thumbnail = fields.optString("thumbnail");
+                        if (!thumbnail.isEmpty()) bitmap = downloadImage(thumbnail);
+                    }
+
+                    String author = "";
+                    if (!tags.isNull(0)) {
+                        JSONObject firstObject = tags.optJSONObject(0);
+                        author = firstObject.optString("webTitle");
+                    }
+
+                    articles.add(new Article(title, url, bitmap, published, author, section));
                 }
             }
         } catch (JSONException e) {
