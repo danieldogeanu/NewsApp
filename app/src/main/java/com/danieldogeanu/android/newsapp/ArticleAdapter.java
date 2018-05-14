@@ -51,12 +51,12 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
             // Initialize the ViewHolder.
             viewHolder = new ViewHolder();
             // Find all necessary Views in the News Item layout.
-            viewHolder.sectionName = convertView.findViewById(R.id.section_name_tv);
-            viewHolder.newsHeadline = convertView.findViewById(R.id.news_headline_tv);
-            viewHolder.bookmarkBtn = convertView.findViewById(R.id.bookmark_img_btn);
-            viewHolder.shareBtn = convertView.findViewById(R.id.share_img_btn);
-            viewHolder.newsThumbnail = convertView.findViewById(R.id.news_thumbnail_iv);
-            viewHolder.authorAndDate = convertView.findViewById(R.id.author_and_date_tv);
+            viewHolder.sectionNameTextView = convertView.findViewById(R.id.section_name_tv);
+            viewHolder.newsHeadlineTextView = convertView.findViewById(R.id.news_headline_tv);
+            viewHolder.bookmarkButton = convertView.findViewById(R.id.bookmark_img_btn);
+            viewHolder.shareButton = convertView.findViewById(R.id.share_img_btn);
+            viewHolder.newsThumbnailImageView = convertView.findViewById(R.id.news_thumbnail_iv);
+            viewHolder.authorAndDateTextView = convertView.findViewById(R.id.author_and_date_tv);
             // Add ViewHolder as a Tag on the News Item layout.
             convertView.setTag(viewHolder);
         } else {
@@ -68,24 +68,24 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         Article currentArticle = getItem(position);
 
         // Set the Section name.
-        viewHolder.sectionName.setText(currentArticle.getArticleSection());
+        viewHolder.sectionNameTextView.setText(currentArticle.getArticleSection());
 
         // Set the Article title.
-        viewHolder.newsHeadline.setText(Utils.capitalize(currentArticle.getArticleTitle()));
+        viewHolder.newsHeadlineTextView.setText(Utils.capitalize(currentArticle.getArticleTitle()));
 
         // Set the Article thumbnail.
         if (currentArticle.hasThumbnail()) {
-            viewHolder.newsThumbnail.setImageBitmap(currentArticle.getArticleThumbnail());
+            viewHolder.newsThumbnailImageView.setImageBitmap(currentArticle.getArticleThumbnail());
         }
 
         // Set the OnClickListener for the Bookmark button.
-        mBookmarks.toggleBookmarkButton(viewHolder.bookmarkBtn, currentArticle);
+        mBookmarks.toggleBookmarkButton(viewHolder.bookmarkButton, currentArticle);
 
         // Attach the Share Intent to the Share button.
-        Utils.attachShareIntent(convertView.getContext(), viewHolder.shareBtn, currentArticle.getArticleUrl());
+        Utils.attachShareIntent(convertView.getContext(), viewHolder.shareButton, currentArticle.getArticleUrl());
 
         // Set the name of the author and the published date of the Article.
-        Utils.composeAuthorDate(convertView.getContext(), viewHolder.authorAndDate, currentArticle);
+        Utils.composeAuthorDate(convertView.getContext(), viewHolder.authorAndDateTextView, currentArticle);
 
         // Return the fully assembled News Item.
         return convertView;
@@ -93,9 +93,9 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
     /** Private inner class that stores all the views necessary to the News Item. */
     private static class ViewHolder {
-        private TextView sectionName, newsHeadline, authorAndDate;
-        private ImageButton bookmarkBtn, shareBtn;
-        private ImageView newsThumbnail;
+        private TextView sectionNameTextView, newsHeadlineTextView, authorAndDateTextView;
+        private ImageButton bookmarkButton, shareButton;
+        private ImageView newsThumbnailImageView;
     }
 
 }
