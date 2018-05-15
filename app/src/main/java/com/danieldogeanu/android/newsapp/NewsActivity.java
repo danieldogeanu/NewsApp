@@ -117,10 +117,6 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
                 getString(R.string.settings_section_key),
                 getString(R.string.settings_section_default)
         );
-        String orderBy = sharedPrefs.getString(
-                getString(R.string.settings_order_by_key),
-                getString(R.string.settings_order_by_default)
-        );
         String pageSize = sharedPrefs.getString(
                 getString(R.string.settings_page_size_key),
                 getString(R.string.settings_page_size_default)
@@ -137,7 +133,6 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         // Add parameters to the URL.
         uriBuilder.appendQueryParameter("format", "json");
         uriBuilder.appendQueryParameter("section", selectedSection);
-        uriBuilder.appendQueryParameter("order-by", orderBy);
         uriBuilder.appendQueryParameter("show-fields", "thumbnail");
         uriBuilder.appendQueryParameter("show-tags", "contributor");
         uriBuilder.appendQueryParameter("page-size", pageSize);
