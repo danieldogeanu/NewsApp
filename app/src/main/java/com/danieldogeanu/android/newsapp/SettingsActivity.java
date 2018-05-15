@@ -24,8 +24,8 @@ public class SettingsActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
 
-            Preference section = findPreference(getString(R.string.settings_section_key));
-            bindPreferenceSummaryToValue(section);
+            Preference selectedSection = findPreference(getString(R.string.settings_section_key));
+            bindPreferenceSummaryToValue(selectedSection);
 
             Preference orderBy = findPreference(getString(R.string.settings_order_by_key));
             bindPreferenceSummaryToValue(orderBy);
@@ -33,8 +33,8 @@ public class SettingsActivity extends AppCompatActivity {
             Preference pageSize = findPreference(getString(R.string.settings_page_size_key));
             bindPreferenceSummaryToValue(pageSize);
 
-            Preference pages = findPreference(getString(R.string.settings_pages_key));
-            bindPreferenceSummaryToValue(pages);
+            Preference numberOfPages = findPreference(getString(R.string.settings_pages_key));
+            bindPreferenceSummaryToValue(numberOfPages);
         }
 
         @Override
