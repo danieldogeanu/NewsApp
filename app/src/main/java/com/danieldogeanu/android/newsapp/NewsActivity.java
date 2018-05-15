@@ -112,6 +112,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         // Add parameters to the URL.
         uriBuilder.appendQueryParameter("format", "json");
         uriBuilder.appendQueryParameter("section", "technology");
+        uriBuilder.appendQueryParameter("order-by", "newest");
         uriBuilder.appendQueryParameter("show-fields", "thumbnail");
         uriBuilder.appendQueryParameter("show-tags", "contributor");
         uriBuilder.appendQueryParameter("page-size", "20");
