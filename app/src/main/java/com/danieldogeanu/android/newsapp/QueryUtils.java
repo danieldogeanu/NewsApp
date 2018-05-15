@@ -148,17 +148,17 @@ public final class QueryUtils {
                     JSONObject fields = currentArticle.optJSONObject("fields");
                     JSONArray tags = currentArticle.optJSONArray("tags");
 
-                    String thumbnail;
+                    String thumbnail = "";
                     Bitmap bitmap = null;
-                    if (fields.has("thumbnail")) {
-                        thumbnail = fields.optString("thumbnail");
+                    if (!currentArticle.isNull("fields")) {
+                        if (fields.has("thumbnail")) thumbnail = fields.optString("thumbnail");
                         if (!thumbnail.isEmpty()) bitmap = downloadImage(thumbnail);
                     }
 
                     String author = "";
-                    if (!tags.isNull(0)) {
+                    if (!currentArticle.isNull("tags") && !tags.isNull(0)) {
                         JSONObject firstObject = tags.optJSONObject(0);
-                        author = firstObject.optString("webTitle");
+                        if (firstObject.has("webTitle")) author = firstObject.optString("webTitle");
                     }
 
                     articles.add(new Article(title, url, bitmap, published, author, section));
