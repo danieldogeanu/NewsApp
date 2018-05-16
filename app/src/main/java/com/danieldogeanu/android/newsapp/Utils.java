@@ -65,4 +65,18 @@ public final class Utils {
         view.setText(composedString);
     }
 
+    /**
+     * Method to compose the API KEY string.
+     * @return Returns the API KEY.
+     */
+    public static String getApiKey() {
+        String sep = "-";
+        String a = BuildConfig.GUARD_A;
+        String b = BuildConfig.GUARD_B;
+        String c = BuildConfig.GUARD_C;
+        String d = BuildConfig.GUARD_D;
+        String e = BuildConfig.GUARD_E;
+        return b+sep+a+sep+d+sep+c+sep+e;
+    }
+
 }

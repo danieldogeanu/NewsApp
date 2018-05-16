@@ -16,12 +16,20 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField('String', 'API_KEY', guardnk)
+            buildConfigField('String', 'GUARD_A', guard_a)
+            buildConfigField('String', 'GUARD_B', guard_b)
+            buildConfigField('String', 'GUARD_C', guard_c)
+            buildConfigField('String', 'GUARD_D', guard_d)
+            buildConfigField('String', 'GUARD_E', guard_e)
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField('String', 'API_KEY', guardnk)
+            buildConfigField('String', 'GUARD_A', guard_a)
+            buildConfigField('String', 'GUARD_B', guard_b)
+            buildConfigField('String', 'GUARD_C', guard_c)
+            buildConfigField('String', 'GUARD_D', guard_d)
+            buildConfigField('String', 'GUARD_E', guard_e)
         }
     }
 }

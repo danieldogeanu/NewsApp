@@ -137,7 +137,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         uriBuilder.appendQueryParameter("show-tags", "contributor");
         uriBuilder.appendQueryParameter("page-size", pageSize);
         uriBuilder.appendQueryParameter("pages", numberOfPages);
-        uriBuilder.appendQueryParameter("api-key", BuildConfig.API_KEY);
+        uriBuilder.appendQueryParameter("api-key", Utils.getApiKey());
 
         // Pass the URL to the ArticleLoader.
         return new ArticleLoader(this, uriBuilder.toString());
@@ -174,12 +174,23 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         mAdapter.clear();
     }
 
+    /**
+     * Overrides the onCreateOptionsMenu() method in order to add Settings to the App Bar menu.
+     * @param menu The menu to inflate.
+     * @return Returns the inflated menu.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
+    /**
+     * Overrides the onOptionsItemSelected() method in order to detect which item was clicked,
+     * and set the Intent to open the SettingsActivity.
+     * @param item The item that was clicked in the menu.
+     * @return Returns the clicked item from the menu.
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
