@@ -46,8 +46,11 @@
     <string name="settings_page_size_label">Articles per Page</string>
     <string name="settings_page_size_key" translatable="false">page_size</string>
     <string name="settings_page_size_default" translatable="false">20</string>
+    <string name="settings_page_size_error">Value must be between 1 and 200.</string>
 
     <string name="settings_pages_label">Number of Pages</string>
     <string name="settings_pages_key">pages</string>
     <string name="settings_pages_default">1</string>
+    <string name="settings_pages_error">Value must be between 1 and 256.</string>
+
 </resources>

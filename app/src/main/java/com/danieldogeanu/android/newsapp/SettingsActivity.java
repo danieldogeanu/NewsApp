@@ -1,13 +1,13 @@
 package com.danieldogeanu.android.newsapp;
 
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 /**
  * Class that initializes the Settings Activity for the app.
@@ -28,6 +28,14 @@ public class SettingsActivity extends AppCompatActivity {
      * Inner class that extends the PreferenceFragment and implements a Change Listener for the Preference class.
      */
     public static class NewsPreferenceFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener {
+
+        // Limits for the numbers of Articles per Page.
+        private static final int MIN_ARTICLES = 1;
+        private static final int MAX_ARTICLES = 200;
+
+        // Limits for the number of Pages allowed.
+        private static final int MIN_PAGES = 1;
+        private static final int MAX_PAGES = 256;
 
         /**
          * Overrides the onCreate() method to assemble and display the NewsPreferenceFragment.
@@ -60,10 +68,9 @@ public class SettingsActivity extends AppCompatActivity {
          */
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
-            // Extract the String value from the Object.
             String stringValue = value.toString();
+            String prefKey = preference.getKey();
 
-            // Check to see if it's a list or a text field value and process accordingly.
             if (preference instanceof ListPreference) {
                 ListPreference listPreference = (ListPreference) preference;
                 int prefIndex = listPreference.findIndexOfValue(stringValue);
@@ -72,7 +79,8 @@ public class SettingsActivity extends AppCompatActivity {
                     preference.setSummary(labels[prefIndex]);
                 }
             } else {
-                preference.setSummary(stringValue);
+                boolean canSave = canSavePref(prefKey, stringValue);
+                if (canSave) preference.setSummary(stringValue);
             }
 
             return true;
@@ -87,6 +95,39 @@ public class SettingsActivity extends AppCompatActivity {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(preference.getContext());
             String preferenceString = preferences.getString(preference.getKey(), "");
             onPreferenceChange(preference, preferenceString);
+        }
+
+        /**
+         * Method to check if the value is safe to save, so that the app wont crash.
+         * @param prefKey The Preference Key to check the value for.
+         * @param prefValue The Value to check if it's safe to save.
+         * @return Returns true if it's safe to safe, or false otherwise.
+         */
+        private boolean canSavePref(String prefKey, String prefValue) {
+            String pageSizeKey = getString(R.string.settings_page_size_key);
+            String numberOfPagesKey = getString(R.string.settings_pages_key);
+            String pageSizeError = getString(R.string.settings_page_size_error);
+            String numberOfPagesError = getString(R.string.settings_pages_error);
+            int currentPrefValue = Integer.parseInt(prefValue);
+            boolean canSave = false;
+
+            if (prefKey.equals(pageSizeKey)) {
+                if ((currentPrefValue >= MIN_ARTICLES) && (currentPrefValue <= MAX_ARTICLES)) {
+                    canSave = true;
+                } else {
+                    Utils.showToast(getActivity(), pageSizeError);
+                }
+            }
+
+            if (prefKey.equals(numberOfPagesKey)) {
+                if ((currentPrefValue >= MIN_PAGES) && (currentPrefValue <= MAX_PAGES)) {
+                    canSave = true;
+                } else {
+                    Utils.showToast(getActivity(), numberOfPagesError);
+                }
+            }
+
+            return canSave;
         }
     }
 
