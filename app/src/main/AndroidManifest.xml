@@ -19,8 +19,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SettingsActivity"
+        <activity
+            android:name=".SettingsActivity"
             android:label="@string/settings_title">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".NewsActivity" />
+        </activity>
+        <activity
+            android:name=".BookmarksActivity"
+            android:label="@string/bookmarks_title">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".NewsActivity" />

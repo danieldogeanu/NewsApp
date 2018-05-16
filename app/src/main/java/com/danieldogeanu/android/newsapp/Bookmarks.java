@@ -26,6 +26,11 @@ public class Bookmarks {
         return(INSTANCE);
     }
 
+    /** @return Returns the Bookmarks list. */
+    public ArrayList<Article> getBookmarks() {
+        return mBookmarks;
+    }
+
     /**
      * Method to add the Article to the Bookmarks list.
      * @param article The Article to add to Bookmarks list.

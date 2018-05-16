@@ -2,6 +2,7 @@ package com.danieldogeanu.android.newsapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -87,6 +88,27 @@ public final class Utils {
      */
     public static void showToast(Context context, CharSequence message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Method to start selected Activity via Intent.
+     * @param context The Context from which this method is called.
+     * @param activity The activity to start via Intent.
+     */
+    public static void startActivity(Context context, Class activity) {
+        Intent thisIntent = new Intent(context, activity);
+        context.startActivity(thisIntent);
+    }
+
+    /**
+     * Method to open the selected Article in browser via Intent.
+     * @param context The Context from which this method is called.
+     * @param url The URL to open in browser.
+     */
+    public static void openWebsite(Context context, String url) {
+        Uri articleUri = Uri.parse(url);
+        Intent websiteIntent = new Intent(Intent.ACTION_VIEW, articleUri);
+        context.startActivity(websiteIntent);
     }
 
 }

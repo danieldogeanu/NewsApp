@@ -2,7 +2,6 @@ package com.danieldogeanu.android.newsapp;
 
 import android.app.LoaderManager;
 import android.content.Context;
-import android.content.Intent;
 import android.content.Loader;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
@@ -72,17 +71,10 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         // Assign the view to be used for the empty state.
         newsList.setEmptyView(mEmptyStateView);
 
-        // Set the onItemClickListener() to handle item clicks.
+        // Attach Intent to open the Articles in the browser, on item click.
         newsList.setOnItemClickListener((adapterView, view, i, l) -> {
-
-            // Get the current Article clicked.
             Article currentArticle = mAdapter.getItem(i);
-
-            // Attach Intent to open the Article in the browser.
-            Uri articleUri = Uri.parse(currentArticle.getArticleUrl());
-            Intent websiteIntent = new Intent(Intent.ACTION_VIEW, articleUri);
-            startActivity(websiteIntent);
-
+            Utils.openWebsite(NewsActivity.this, currentArticle.getArticleUrl());
         });
 
         // Initialize the loading of the articles.
@@ -194,9 +186,12 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+        if (id == R.id.action_bookmarks) {
+            Utils.startActivity(this, BookmarksActivity.class);
+            return true;
+        }
         if (id == R.id.action_settings) {
-            Intent settingsIntent = new Intent(this, SettingsActivity.class);
-            startActivity(settingsIntent);
+            Utils.startActivity(this, SettingsActivity.class);
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -19,7 +19,7 @@
     <string name="intent_title">Share via&#8230;</string>
 
     <string name="settings_menu_item">Settings</string>
-    <string name="settings_title">News App Settings</string>
+    <string name="settings_title">Settings</string>
 
     <string name="settings_section_label">Section</string>
     <string name="settings_section_key" translatable="false">section</string>
@@ -52,5 +52,8 @@
     <string name="settings_pages_key">pages</string>
     <string name="settings_pages_default">1</string>
     <string name="settings_pages_error">Value must be between 1 and 256.</string>
+
+    <string name="bookmarks_menu_item">Bookmarks</string>
+    <string name="bookmarks_title">Bookmarks</string>
 
 </resources>

@@ -131,4 +131,9 @@
         <item name="android:layout_centerInParent">true</item>
     </style>
 
+    <style name="BookmarksActivity">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
 </resources>
