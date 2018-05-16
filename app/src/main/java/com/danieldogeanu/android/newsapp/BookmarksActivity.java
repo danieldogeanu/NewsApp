@@ -2,7 +2,10 @@ package com.danieldogeanu.android.newsapp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -24,10 +27,23 @@ public class BookmarksActivity extends AppCompatActivity {
         Bookmarks bookmarks = Bookmarks.getInstance();
         ArrayList<Article> articles = bookmarks.getBookmarks();
 
+        // Get Empty State views.
+        View emptyStateView = findViewById(R.id.empty_state_view);
+        ImageView emptyStateImageView = findViewById(R.id.empty_image_view);
+        TextView emptyStateTextView = findViewById(R.id.empty_text_view);
+
+        // Get the error message for Empty Bookmarks.
+        String noBookmarksMsg = getString(R.string.no_bookmarks);
+
+        // Set the EmptyState text and image icon.
+        emptyStateImageView.setImageResource(R.drawable.ic_bookmark);
+        emptyStateTextView.setText(noBookmarksMsg);
+
         // Initialize the Adapter with the Bookmarked articles.
         ListView bookmarksList = findViewById(R.id.bookmarks_list_view);
         ArticleAdapter adapter = new ArticleAdapter(BookmarksActivity.this, articles, bookmarks);
         bookmarksList.setAdapter(adapter);
+        bookmarksList.setEmptyView(emptyStateView);
 
         // Attach Intent to open the Articles in the browser, on item click.
         bookmarksList.setOnItemClickListener((adapterView, view, i, l) -> {

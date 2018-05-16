@@ -8,4 +8,9 @@
         android:id="@+id/bookmarks_list_view"
         style="@style/NewsList" />
 
+    <include
+        android:id="@+id/empty_state_view"
+        style="@style/EmptyState"
+        layout="@layout/empty_state" />
+
 </RelativeLayout>

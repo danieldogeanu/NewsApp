@@ -14,6 +14,7 @@
 
     <string name="no_articles">We couldn\'t retrieve any articles.\nThe server might be too busy.\nPlease try again later.</string>
     <string name="no_internet">No Internet connection.\nPlease make sure your Internet\nconnection is turned on.</string>
+    <string name="no_bookmarks">You haven\'t Bookmarked any articles.\nPress the Bookmarks icon to\nadd articles to this list.</string>
 
     <string name="intent_subject">Check Out This News</string>
     <string name="intent_title">Share via&#8230;</string>
