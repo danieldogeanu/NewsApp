@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Class that contains general utility methods to be used across the app.
@@ -77,6 +78,15 @@ public final class Utils {
         String d = BuildConfig.GUARD_D;
         String e = BuildConfig.GUARD_E;
         return b+sep+a+sep+d+sep+c+sep+e;
+    }
+
+    /**
+     * Method to show short Toast message in the app.
+     * @param context The Context from which this method is called.
+     * @param message The message to show in the Toast.
+     */
+    public static void showToast(Context context, CharSequence message) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
 }
