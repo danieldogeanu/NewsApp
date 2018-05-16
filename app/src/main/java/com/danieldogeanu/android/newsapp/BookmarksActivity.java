@@ -44,6 +44,7 @@ public class BookmarksActivity extends AppCompatActivity {
         ArticleAdapter adapter = new ArticleAdapter(BookmarksActivity.this, articles, bookmarks);
         bookmarksList.setAdapter(adapter);
         bookmarksList.setEmptyView(emptyStateView);
+        bookmarks.setAdapter(adapter);
 
         // Attach Intent to open the Articles in the browser, on item click.
         bookmarksList.setOnItemClickListener((adapterView, view, i, l) -> {

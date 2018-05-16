@@ -18,6 +18,9 @@ public class Bookmarks {
     // The global Bookmarks list that stores the bookmarked articles.
     private ArrayList<Article> mBookmarks = new ArrayList<>();
 
+    // The stored Adapter from the BookmarksActivity.
+    private ArticleAdapter mAdapter;
+
     /** Private constructor, so it can't be accessed from outside the class. */
     private Bookmarks() {}
 
@@ -29,6 +32,16 @@ public class Bookmarks {
     /** @return Returns the Bookmarks list. */
     public ArrayList<Article> getBookmarks() {
         return mBookmarks;
+    }
+
+    /**
+     * Method to set the adapter reference from the BookmarksActivity.
+     * We need this adapter so we can call .notifyDataSetChanged() method on it
+     * and remove items from the Bookmarks list in the BookmarksActivity.
+     * @param adapter The adapter from the BookmarksActivity.
+     */
+    public void setAdapter(ArticleAdapter adapter) {
+        mAdapter = adapter;
     }
 
     /**
@@ -92,6 +105,7 @@ public class Bookmarks {
             } else {
                 removeArticleFromBookmarks(article);
                 button.setActivated(false);
+                mAdapter.notifyDataSetChanged();
             }
         });
     }
