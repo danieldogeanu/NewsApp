@@ -5,9 +5,16 @@
     style="@style/NewsActivity"
     tools:context=".NewsActivity">
 
-    <ListView
-        android:id="@+id/news_list_view"
-        style="@style/NewsList" />
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/news_list_view"
+            style="@style/NewsList" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
     <include
         android:id="@+id/empty_state_view"

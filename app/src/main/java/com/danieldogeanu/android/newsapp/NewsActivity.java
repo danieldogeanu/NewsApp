@@ -9,6 +9,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -39,6 +40,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
     private View mEmptyStateView, mLoadingIndicator;
     private TextView mEmptyStateTextView;
     private String mNoInternetMsg, mNoArticlesMsg;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     /**
      * Overrides the onCreate() method to assemble and display the News Activity.
@@ -63,6 +65,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         mEmptyStateView = findViewById(R.id.empty_state_view);
         mEmptyStateTextView = findViewById(R.id.empty_text_view);
         mLoadingIndicator = findViewById(R.id.loading_indicator);
+        mSwipeRefreshLayout = findViewById(R.id.swipe_refresh);
 
         // Get the error messages strings.
         mNoArticlesMsg = getString(R.string.no_articles);
@@ -78,15 +81,13 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         });
 
         // Initialize the loading of the articles.
-        if (isConnected) {
-            LoaderManager loaderManager = getLoaderManager();
-            loaderManager.initLoader(LOADER_ID, null, this);
-        } else {
-            mLoadingIndicator.setVisibility(View.GONE);
-            mEmptyStateTextView.setText(mNoInternetMsg);
-            Log.e(LOG_TAG, mNoInternetMsg);
-        }
+        loadArticles(isConnected, false);
 
+        // Refresh articles on swipe down.
+        mSwipeRefreshLayout.setOnRefreshListener(() -> {
+            mAdapter.clear();
+            loadArticles(isConnected, true);
+        });
     }
 
     /**
@@ -155,6 +156,9 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         if (articles != null && !articles.isEmpty()) mAdapter.addAll(articles);
         if (articles == null || articles.isEmpty()) Log.e(LOG_TAG, mNoArticlesMsg);
 
+        // Stop the refresh indicator.
+        mSwipeRefreshLayout.setRefreshing(false);
+
     }
 
     /**
@@ -196,4 +200,24 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         }
         return super.onOptionsItemSelected(item);
     }
+
+    /**
+     * Method to initiate the LoadManager and load Articles from the server.
+     * @param isConnected The state of the network connection.
+     */
+    private void loadArticles(boolean isConnected, boolean isRefresh) {
+        if (isConnected) {
+            LoaderManager loaderManager = getLoaderManager();
+            if (!isRefresh) {
+                loaderManager.initLoader(LOADER_ID, null, this);
+            } else {
+                loaderManager.restartLoader(LOADER_ID, null, this);
+            }
+        } else {
+            mLoadingIndicator.setVisibility(View.GONE);
+            mEmptyStateTextView.setText(mNoInternetMsg);
+            Log.e(LOG_TAG, mNoInternetMsg);
+        }
+    }
+
 }
