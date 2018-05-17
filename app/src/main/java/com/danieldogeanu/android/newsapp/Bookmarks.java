@@ -105,7 +105,7 @@ public class Bookmarks {
             } else {
                 removeArticleFromBookmarks(article);
                 button.setActivated(false);
-                mAdapter.notifyDataSetChanged();
+                if (mAdapter != null) mAdapter.notifyDataSetChanged();
             }
         });
     }
