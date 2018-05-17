@@ -2,9 +2,11 @@
 
 This is just a practice app for [Google Developer Scholarship: Android Basics Nanodegree](https://www.udacity.com/google-scholarships). Please ignore.
 
-#### [See Video Demo Here](https://youtu.be/qAZIHGXAkeg)
+#### [See Video Demo Here](https://youtu.be/OhHyuvc3UBE)
 
 ![News App Main Screen](https://github.com/danieldogeanu/NewsApp/blob/master/screenshots/newsapp_main.jpg)
+![News App Settings Screen](https://github.com/danieldogeanu/NewsApp/blob/master/screenshots/newsapp_settings.jpg)
+![News App Bookmarks Screen](https://github.com/danieldogeanu/NewsApp/blob/master/screenshots/newsapp_bookmarks.jpg)
 ![News App Share Screen](https://github.com/danieldogeanu/NewsApp/blob/master/screenshots/newsapp_share.jpg)
 
 ### Working Files Are:
@@ -15,17 +17,26 @@ This is just a practice app for [Google Developer Scholarship: Android Basics Na
 * [ArticleAdapter.java](https://github.com/danieldogeanu/NewsApp/blob/master/app/src/main/java/com/danieldogeanu/android/newsapp/ArticleAdapter.java)
 * [ArticleLoader.java](https://github.com/danieldogeanu/NewsApp/blob/master/app/src/main/java/com/danieldogeanu/android/newsapp/ArticleLoader.java)
 * [Bookmarks.java](https://github.com/danieldogeanu/NewsApp/blob/master/app/src/main/java/com/danieldogeanu/android/newsapp/Bookmarks.java)
+* [BookmarksActivity.java](https://github.com/danieldogeanu/NewsApp/blob/master/app/src/main/java/com/danieldogeanu/android/newsapp/BookmarksActivity.java)
 * [NewsActivity.java](https://github.com/danieldogeanu/NewsApp/blob/master/app/src/main/java/com/danieldogeanu/android/newsapp/NewsActivity.java)
 * [QueryUtils.java](https://github.com/danieldogeanu/NewsApp/blob/master/app/src/main/java/com/danieldogeanu/android/newsapp/QueryUtils.java)
+* [SettingsActivity.java](https://github.com/danieldogeanu/NewsApp/blob/master/app/src/main/java/com/danieldogeanu/android/newsapp/SettingsActivity.java)
 * [Utils.java](https://github.com/danieldogeanu/NewsApp/blob/master/app/src/main/java/com/danieldogeanu/android/newsapp/Utils.java)
 ##### Layout
+* [activity_bookmarks.xml](https://github.com/danieldogeanu/NewsApp/blob/master/app/src/main/res/layout/activity_bookmarks.xml)
 * [activity_news.xml](https://github.com/danieldogeanu/NewsApp/blob/master/app/src/main/res/layout/activity_news.xml)
+* [activity_settings.xml](https://github.com/danieldogeanu/NewsApp/blob/master/app/src/main/res/layout/activity_settings.xml)
 * [empty_state.xml](https://github.com/danieldogeanu/NewsApp/blob/master/app/src/main/res/layout/empty_state.xml)
 * [news_item.xml](https://github.com/danieldogeanu/NewsApp/blob/master/app/src/main/res/layout/news_item.xml)
+##### Menus
+* [main.xml](https://github.com/danieldogeanu/NewsApp/blob/master/app/src/main/res/menu/main.xml)
 ##### Values
+* [arrays.xml](https://github.com/danieldogeanu/NewsApp/blob/master/app/src/main/res/values/arrays.xml)
 * [colors.xml](https://github.com/danieldogeanu/NewsApp/blob/master/app/src/main/res/values/colors.xml)
 * [strings.xml](https://github.com/danieldogeanu/NewsApp/blob/master/app/src/main/res/values/strings.xml)
 * [styles.xml](https://github.com/danieldogeanu/NewsApp/blob/master/app/src/main/res/values/styles.xml)
+##### XML
+* [settings_main.xml](https://github.com/danieldogeanu/NewsApp/blob/master/app/src/main/res/xml/settings_main.xml)
 ##### Drawables
 * [Drawable Folder](https://github.com/danieldogeanu/NewsApp/tree/master/app/src/main/res/drawable)
 
